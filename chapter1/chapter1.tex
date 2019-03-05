@@ -1,0 +1,98 @@
+\linespread{1.25}
+\noindent
+En este capítulo el autor presentara su motivación, el problema a resolver y la hipótesis propuesta.
+
+\section*{Identificación del problema}
+\addcontentsline{toc}{section}{\protect\numberline{}Identificación del problema}
+\noindent
+A pesar del gran crecimiento de la industria boliviana de software \citet{sfldb_13}, según la experiencia del autor los grandes proyectos en su mayoría se encuentran llenos de errores y con \textit{code rotting}. Esto puede provocar que los sistemas se comporten de maneras inesperadas. ¿Qué hacer cuando el software hace algo para lo cuál no estaba diseñado? o ¿Qué hacer cuando los clientes se encuentran en problemas causados por los errores que poseemos en el software?. La lucha entre mantener una alta calidad de servicio y mantener bajo los costos totales de la propiedad es uno de los problemas que se ve enfrentando el autor desde sus inicios como desarrollador de software en SwissBytes a mediados del 2015.
+
+\vspace{5mm}
+\noindent
+El autor se encuentra dando soporte a diversos proyectos de software ya iniciados hace mucho tiempo, donde la introducción de nuevos requerimientos provoca errores que algunas veces pueden resolverse rápidamente, pero en otras ocaciones los errores tienen efectos más severos para el cliente, la productividad del equipo y la relación que se tenia con el calendario de entregas, lo cual repercute en el caso de estudio de la siguiente manera:
+\begin{itemize}
+    \item La subida de costos de la empresa por la contratación y capacitación de empleados que realizaran el trabajo de control de calidad.
+    \item La subida de costos de la empresa por el largo periodo de pruebas manuales para asegurar el correcto funcionamiento del sistema.
+    \item Desconfianza por parte de los clientes debido a la incertidumbre al momento de entregar nuevas funcionalidades.
+\end{itemize}
+La experiencia del autor trabajando en estos sistemas lo han inspirado a realizar esta investigación. El problema ha resolver es: ¿como reducir el costo de validación y verificación de los procesos logísticos del sistema WARA ERP ya entregados?.
+
+\section*{Objeto de estudio}
+\addcontentsline{toc}{section}{\protect\numberline{}Objeto de estudio}
+\noindent
+La calidad de software es uno de esos conceptos que no pueden ser definidos en su totalidad, diferentes personas pueden tener distintas maneras de medir y entender que es calidad. Hong Zhu según la teoría clásica del control de calidad clasifica la calidad de la siguiente manera \citet{sdm_05}:
+
+\begin{itemize}
+    \item Transcendental: La calidad de software puede ser identificada pero no definida en su totalidad.
+    \item Basado en su valor: La calidad se puede medir en base a que si los clientes pueden permitirse el costo del producto.
+    \item Manufactura: La calidad puede ser medida por el cumplimiento de las especificaciones. 
+    \item Producto: La calidad esta vinculada con las características propias del producto.
+\end{itemize}
+
+\vspace{5mm}
+\noindent
+    Existen muchas y muy buenas prácticas para alcanzar la calidad en el software, pero según el autor todas tiene una característica común: son practicas informales. En un área que no posee más de setenta años las buenas prácticas para el desarrollo de software aún se mantienen como opcionales. Pero: ¿Que provoca que se escriba mal código? Martin Flower en la introducción de su libro \textit{Refactoring: Improving the Design of Existing Code} menciona lo siguiente:  \say{\textit{The project had to ship code that worked, not code that would please an academic}} \citet{RIDEC_99}. Según Robert C. Martin \textit{code rotting} es el resultado de desarrolladores que toman atajos para alcanzar fechas. Un código mal diseñado e implementado conduce al crecimiento de errores y aumenta la dificultad de mantenimiento \citet{cc_09}. Las presiones de presupuesto y de calendario pueden provocar un ambiente en donde se pierde el enfoque en la calidad del software y se tomen atajos para la resolución del problema. 
+
+\vspace{5mm}
+\noindent
+En el caso de WARA ERP  el autor  identifica los siguientes atajos:
+
+\begin{itemize}
+    \item Por la inexperiencia del equipo en procesos logísticos se decidió utilizar como base el sistema logístico de Odoo v11 comunidad.
+    \item Ya que el equipo se encontraba al inició en la etapa de exploración del modelo 3x de Kent Beck. Se decidió no utilizar herramientas de pruebas automatizadas y esta decisión no se cambio con la evolución del producto.
+    \item Se decidió aplicar una estrategia \textit{multi-tenancy} de una sola base de datos con esquemas compartidos, para dar cobertura a cliente que necesiten más de una instancia de WARA ERP.
+\end{itemize}
+
+\noindent
+Estos atajos según el autor provocan incertidumbre al momento de verificar y validar los procesos que se entregan a los clientes. Ya que en una instalación sencilla que posee tres \textit{tenant's} existen alrededor de sesenta procesos que dependen directamente del módulo logístico y como cada uno de los \textit{tenant} son implementaciones a medida se eleva considerablemente el esfuerzo para realizar la verificación y validación. 
+
+\section*{Objetivo general}
+\addcontentsline{toc}{section}{\protect\numberline{}Objetivo general}
+\noindent
+Implementar un proceso de re-ingeniería que permita la reducción del costo de validación y verificación de los procesos logísticos del sistema WARA ERP.
+
+\section*{Objetivos específicos}
+\addcontentsline{toc}{section}{\protect\numberline{}Objetivos específicos}
+\begin{itemize}
+    \item Determinación del costo actual de validación y verificación de los procesos entregados a los clientes del sistema WARA ERP.
+    
+    \item Sistematización de los fundamentos teóricos del control de calidad en sistemas ya en marcha.
+    
+    \item Identificación de metodologías, y herramientas para la re-ingeniería de procesos ya entregados.
+    
+    \item Implementación de un proceso de re-ingeniería para el control de calidad del sistema WARA ERP. 
+    
+    \item Verificación de la validez del proceso de re-ingeniería implementado en el sistema WARA ERP.
+\end{itemize}
+
+\section*{Campo de acción}
+\addcontentsline{toc}{section}{\protect\numberline{}Campo de acción}
+\noindent
+La investigación de: ¿Como reducir costos en la validación y verificación procesos de software? Se realizará en el proyecto de software WARA ERP, que posee las siguiente características:
+
+\begin{itemize}
+    \item Es una solución que a pesar de tener un core único esta se desarrolla a medida de las necesidades de sus usuarios.
+    \item Esta implementado para dar soporte a diferentes modelos de negocios de distintas empresas Bolivianas que se encuentra principalmente en la ciudad de Santa Cruz de la Sierra, Bolivia.
+    \item WARA ERP v2 esta basada en Odoo v11 comunidad. 
+    \item Las tecnologías principales en las que se encuentra basada son: Python 3.5, y Postgres 9.5
+\end{itemize}
+
+\section*{Hipótesis}
+\noindent
+La implementación de pruebas funcionales bajo el enfoque \textit{BDD} en el proceso de verificación y validación del sistema WARA ERP en el modulo logístico reducirá los costos de mantenimiento del sistema.
+
+\section*{Significación práctica}
+\noindent
+La solución es aplicable a proyectos de software de equipos pequeños y medianos. La solución ayudará a las pequeñas y medianas organizaciones de desarrollo de software de Santa Cruz de la Sierra a reducir el costo en la validación y verificación de procesos. Además, el autor cree firmemente que la implementación ayudara a estas empresas a crear productos de mayor calidad y un alto nivel de satisfacción del cliente.
+
+\section*{Aporte teórico}
+\noindent
+La implementación de este trabajo aumentará la profundidad del conocimiento sobre el área control de calidad, y el proceso de refactorización dentro del proyecto \textit{Open Source} Odoo para los profesionales como para los investigadores.
+
+\section*{Métodos de investigación}
+Something 1.9
+
+\iffalse
+\section{Población y muestra}
+Something 1.10
+\fi

@@ -18,6 +18,8 @@
 
 % Agregando dirtytalk porque... me gusta la manera en que maneja las quotations
 \usepackage{dirtytalk}
+\usepackage{natbib}
+\usepackage{cite}
 
 % Para  manejar las imagenes
 \usepackage{graphicx}
@@ -53,4 +55,14 @@
 
 \section*{Resumen}
 \subfile{abstract/abstract}
+
+\tableofcontents
+
+\chapter*{Introducción}
+\addcontentsline{toc}{chapter}{\protect\numberline{}Introducción}
+\subfile{chapter1/chapter1}
+
+\bibliography{bibliography}
+\bibliographystyle{apalike}
+
 \end{document}
