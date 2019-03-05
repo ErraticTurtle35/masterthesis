@@ -1,0 +1,50 @@
+\documentclass{report}
+
+% Configurando el lenguaje a español
+\usepackage[spanish]{babel}
+
+% Definir el formato del papel
+\usepackage{geometry} 
+\geometry{paper=a4paper}
+
+% Agregando fuentes requeridas por la Universidad 
+\usepackage{fontspec}
+\setmainfont{Arial}
+\newfontfamily\tahoma[Path=fonts/,Ligatures=TeX]{TAHOMA}
+\newfontfamily\tahomabd[Path=fonts/,Ligatures=TeX]{tahomabd}
+
+% Agregando subfiles para manejar diferentes archivos
+\usepackage{subfiles}
+
+% Agregando dirtytalk porque... me gusta la manera en que maneja las quotations
+\usepackage{dirtytalk}
+
+% Para  manejar las imagenes
+\usepackage{graphicx}
+
+% Nuevo comando para manejar paginas en blanco
+\newcommand*{\blankpage}{
+  \vspace*{\fill}
+  \centering
+  \vspace{\fill}
+}
+
+% Nueva seccion para agregar la dedicacion sin formato
+\newenvironment{dedication}
+  {\clearpage           
+   \thispagestyle{empty}
+   \vspace*{\stretch{1}}
+   \itshape             
+   \raggedleft          
+  }
+  {\par 
+   \vspace{\stretch{3}} 
+   \clearpage           
+  }
+% NO use el comando title para crear la caratula porque tenia problemas configurando el formato de la Universidad. Es una deuda tecnica ;)
+\begin{document}
+
+% La caratula de la Universidad
+\subfile{title/title}
+
+\end{document}
